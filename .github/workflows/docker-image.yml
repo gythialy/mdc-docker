@@ -45,7 +45,7 @@ jobs:
         username: ${{ github.repository_owner }}
         password: ${{ secrets.GITHUB_TOKEN }}
     - name: Build and push
-      uses: docker/build-push-action@v3
+      uses: docker/build-push-action@v4
       env: 
         MDC_TAG: ${{ github.event.inputs.git-tag || env.VERSION || '6.5.1' }}
       with:
