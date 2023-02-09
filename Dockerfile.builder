@@ -1,4 +1,4 @@
-FROM python:3.10.9-alpine
+FROM python:3.11.2-alpine
 
 # Official Python base image is needed or some applications will segfault.
 # PyInstaller needs zlib-dev, gcc, libc-dev, and musl-dev
