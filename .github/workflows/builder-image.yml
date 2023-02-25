@@ -3,7 +3,7 @@ name: Build Mdc builder image
 on: 
   workflow_dispatch:
   schedule:
-    - cron: '0 10 * * *'
+    - cron: '11 10 * * *'
 jobs:
 
   build:
@@ -50,7 +50,8 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |-
-        echo -e "$(curl https://api.github.com/repos/yoshiko2/Movie_Data_Capture/releases/latest -s | jq .name -r)" > VERSION
+        LATEST_RELEASE=$(curl --silent "https://api.github.com/repos/yoshiko2/Movie_Data_Capture/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+        echo -e "${LATEST_RELEASE}" > VERSION
         git remote set-url origin https://${GITHUB_TOKEN}@github.com/gythialy/mdc-docker.git
         git diff
         git config --global user.email "gythialy.koo+github@gmail.com"
