@@ -1,6 +1,6 @@
 FROM ghcr.io/gythialy/mdc-builder:latest as build-stage
 
-ENV MDC_TAG=${MDC_TAG:-6.5.1}
+ARG MDC_TAG=6.5.1
 
 RUN mkdir -p /tmp/mdc && cd /tmp/mdc && \
     # download mdc source code
